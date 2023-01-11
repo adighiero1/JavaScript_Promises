@@ -15,6 +15,29 @@ function getList() {
   });
 }
 
+console.log("Excercise 1");
+let paragraphError = document.getElementById("error");
+let unorderedList = document.getElementById("list");
+
+console.log("Excercise 2");
+
+let promise = getList();
+
+function handleSuccess(list) {
+  //takes in array consolelogs it
+  list.forEach((hobbit) => {
+    let thisLi = document.createElement("li");
+    thisLi.textContent = hobbit;
+    unorderedList.appendChild(thisLi);
+  });
+}
+
+function handleError(err) {
+  paragraphError.textContent = err.message;
+}
+
+promise.then(handleSuccess).catch(handleError);
+
 // TODO: Handle the resolved or rejected states of the promise
 
 // TODO: If the promise resolves with the list of hobbits
